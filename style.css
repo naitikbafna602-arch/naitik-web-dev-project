@@ -1,0 +1,181 @@
+/* Colour, font and spacing variables: neutrals plus one deep blue accent */
+:root {
+  --bg: #ffffff;
+  --bg-soft: #f2f4f9;
+  --text: #14192b;
+  --text-2: #444b63;
+  --line: #cfd5e3;
+  --accent: #1c3faa;
+  --accent-dark: #152f80;
+  --s1: 8px;
+  --s2: 16px;
+  --s3: 24px;
+  --s4: 40px;
+  --s5: 72px;
+  --font-head: "DM Sans", Arial, sans-serif;
+  --font-body: "Source Serif 4", Georgia, serif;
+}
+
+/* Base element styles: body, headings, paragraphs, lists, links */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  line-height: 1.65;
+}
+h1, h2, h3, h4 { font-family: var(--font-head); line-height: 1.2; margin: 0; }
+h1 { font-size: 3rem; margin-bottom: var(--s2); }
+h2 { font-size: 1.75rem; margin-bottom: var(--s3); }
+h3 { font-size: 1.25rem; margin-bottom: var(--s1); }
+p { max-width: 65ch; margin: 0 0 var(--s2); }
+ul { margin: 0; padding-left: 1.25rem; }
+a { color: var(--accent); }
+a:hover { color: var(--accent-dark); }
+a:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+/* Layout wrapper: keeps content centred with room at the screen edge */
+.wrap { max-width: 960px; margin: 0 auto; padding: 0 var(--s3); }
+
+/* Navigation bar: sticky, flexbox */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+.nav-bar { display: flex; justify-content: space-between; align-items: center; }
+.nav-name {
+  font-family: var(--font-head);
+  font-weight: 700;
+  color: var(--text);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  min-height: 56px;
+}
+.nav-list { display: flex; gap: var(--s1); list-style: none; margin: 0; padding: 0; }
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 var(--s2);
+  font-family: var(--font-head);
+  font-weight: 500;
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.nav-link:hover { color: var(--accent); }
+
+/* Hero (#hero): name, one sentence and the two main buttons */
+#hero { padding: var(--s5) 0; }
+.lead { font-size: 1.5rem; line-height: 1.5; color: var(--text); margin-bottom: var(--s3); }
+
+/* Buttons: main call to action and outline buttons */
+.button-row { display: flex; flex-wrap: wrap; gap: var(--s2); }
+.button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 0 var(--s3);
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  border: 2px solid var(--accent);
+  border-radius: 4px;
+  transition: background-color 0.15s, color 0.15s;
+}
+.button-primary { background: var(--accent); color: #ffffff; }
+.button-primary:hover { background: var(--accent-dark); border-color: var(--accent-dark); color: #ffffff; }
+.button-outline { background: var(--bg); color: var(--accent); }
+.button-outline:hover { background: var(--accent); color: #ffffff; }
+
+/* Experience (#experience): section and flat cards in a grid */
+#experience { background: var(--bg-soft); padding: var(--s5) 0; }
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--s3);
+  margin-bottom: var(--s4);
+}
+.card {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: var(--s3);
+}
+.card p:last-child { margin-bottom: 0; }
+.meta { color: var(--text-2); font-size: 0.95rem; }
+.note { margin-bottom: 0; }
+
+/* Paper resume (#resume): white sheet on a soft background */
+#resume { padding: var(--s5) 0; }
+#resume .no-print { margin-bottom: var(--s4); }
+#resume .no-print h2 { margin-bottom: var(--s2); }
+.sheet {
+  max-width: 794px;
+  margin: 0 auto;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  padding: var(--s4);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.sheet h2.sheet-name { font-size: 1.75rem; margin-bottom: var(--s1); }
+.sheet h3 {
+  font-size: 1.05rem;
+  margin: var(--s3) 0 var(--s1);
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--line);
+}
+.sheet h4 { font-size: 1rem; margin: var(--s2) 0 4px; }
+.sheet p { margin-bottom: var(--s1); }
+.sheet li { margin-bottom: 4px; }
+.sheet-contact { color: var(--text-2); }
+
+/* Contact (#contact): email and LinkedIn buttons */
+#contact { padding: var(--s5) 0; }
+
+/* Footer: plain closing line */
+.site-footer { border-top: 1px solid var(--line); padding: var(--s3) 0; color: var(--text-2); }
+.site-footer p { margin: 0; }
+
+/* Small screens: narrower than 700px */
+@media (max-width: 700px) {
+  h1 { font-size: 2.25rem; }
+  .lead { font-size: 1.25rem; }
+  .wrap { padding: 0 var(--s2); }
+  .nav-bar { flex-direction: column; align-items: flex-start; padding-bottom: var(--s1); }
+  .nav-link { padding: 0 var(--s1); }
+  .nav-list { gap: 0; }
+  #hero, #experience, #resume, #contact { padding: var(--s4) 0; }
+  .button { width: 100%; justify-content: center; }
+  .sheet { padding: var(--s2); }
+}
+
+/* Reduced motion: turn off all transitions */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .nav-link, .button { transition: none; }
+}
+
+/* Print: show only the resume on one A4 page, black on white */
+@media print {
+  @page { size: A4; margin: 14mm; }
+  .site-nav, .site-footer, #hero, #experience, #contact, .no-print { display: none; }
+  body { background: #ffffff; color: #000000; font-size: 10pt; line-height: 1.35; }
+  #resume { padding: 0; background: #ffffff; }
+  .wrap { max-width: none; padding: 0; }
+  .sheet { border: none; padding: 0; max-width: none; font-size: 10pt; }
+  .sheet *, .sheet a { color: #000000; }
+  .sheet h2.sheet-name { font-size: 18pt; }
+  .sheet h3 { font-size: 11pt; margin-top: 10pt; border-bottom: 1px solid #000000; }
+  .sheet h4 { font-size: 10pt; margin-top: 6pt; }
+  .sheet li { margin-bottom: 2pt; }
+}
